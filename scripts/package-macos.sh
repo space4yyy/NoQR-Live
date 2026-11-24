@@ -58,7 +58,7 @@ productbuild --distribution "$staging/Distribution.xml" --resources "$staging/re
 for folder in src scripts tests packaging config cmake .github; do
   ditto "$folder" "$staging/source/obs-qrcode/$folder"
 done
-cp LICENSE README.md .gitignore CMakeLists.txt 安装插件.command "$staging/source/obs-qrcode/"
+cp LICENSE README.md .gitignore CMakeLists.txt "$staging/source/obs-qrcode/"
 ditto -c -k --sequesterRsrc --keepParent "$staging/source/obs-qrcode" "$PWD/build/OBS-QR-Shield-$version-source.zip"
 cp "$PWD/build/$name.pkg" "$staging/dmg/"
 cp "$PWD/build/OBS-QR-Shield-$version-source.zip" "$staging/dmg/"

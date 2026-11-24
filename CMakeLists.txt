@@ -59,7 +59,7 @@ install(FILES packaging/GPL-3.0.txt DESTINATION . RENAME LICENSE-GPL-3.0.txt)
 install(FILES "${zxing_SOURCE_DIR}/LICENSE" DESTINATION . RENAME LICENSE-ZXing.txt)
 get_filename_component(compiler_bin "${CMAKE_CXX_COMPILER}" DIRECTORY)
 install(FILES "${compiler_bin}/../LICENSE.TXT" DESTINATION . RENAME LICENSE-LLVM-MinGW.txt)
-install(FILES README.md LICENSE .gitignore CMakeLists.txt 安装插件.command DESTINATION source/NoQR-Live)
+install(FILES README.md LICENSE .gitignore CMakeLists.txt DESTINATION source/NoQR-Live)
 install(DIRECTORY src scripts tests config cmake packaging .github DESTINATION source/NoQR-Live)
 install(DIRECTORY "${zxing_SOURCE_DIR}/" DESTINATION source/NoQR-Live/third_party/zxing-cpp)
 
