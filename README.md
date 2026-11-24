@@ -15,7 +15,7 @@
 | macOS 13+，Apple Silicon | DMG 或 PKG | OBS 32.0.2 |
 | Windows x64 | ZIP | OBS 32.0.2 x64 |
 
-从 GitHub Actions 的 **Build OBS plugin** 运行详情下载对应平台的构建产物。动手安装前先退出 OBS。
+安装前先退出 OBS。安装包、源码和 SHA-256 校验文件可在最新版本的 Assets 中下载。 [GitHub Releases](https://github.com/space4yyy/NoQR-Live/releases/latest)
 
 - **macOS**双击 PKG 安装到 `~/Library/Application Support/obs-studio/plugins/obs-qrcode.plugin`。DMG 内含 PKG、安装说明和源码。安装包未经过 Developer ID 签名或 Apple 公证，通过互联网分享时可能被 Gatekeeper 拦截。 [Apple 官方说明](https://support.apple.com/zh-cn/102445)
 - **Windows**解压 ZIP，将其中的 `obs-qrcode` 目录复制到 `%ProgramData%\obs-studio\plugins`。确认 DLL 的完整路径为 `%ProgramData%\obs-studio\plugins\obs-qrcode\bin\64bit\obs-qrcode.dll`。系统可能要求管理员权限。
@@ -90,7 +90,9 @@ OBS_APP="/自定义路径/OBS.app" bash scripts/build.sh
 
 ### GitHub Actions
 
-[Build OBS plugin](.github/workflows/build.yml) 在 push、pull request 和手动触发时分别在 macOS arm64 和 Windows x64 runner 上执行。构建文件上传到该次运行的 Artifacts。
+推送分支、创建 Pull Request 或手动触发都会在 macOS arm64 和 Windows x64 runner 上构建，文件上传到该次运行的 Artifacts。 [GitHub Actions 工作流](.github/workflows/build.yml)
+
+发布版本时，推送与 `config/versions.json` 中 `plugin` 版本一致的标签，例如 `v0.6.0`。两个平台构建都通过后，工作流校验安装包及源码的 SHA-256，并将这些文件发布到该标签的 GitHub Release。
 
 ## 验证
 
