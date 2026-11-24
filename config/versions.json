@@ -1,0 +1,14 @@
+{
+  "plugin": "0.6.0",
+  "pluginBuild": 6,
+  "obs": "32.0.2",
+  "obsSourceSha256": "39e99b9fbdc77e7e87cfd9c7e8709d1d427627bad5b21b791019c887c8598d13",
+  "obsMacArm64Sha256": "5c8f0e2349e45b57512e32312b053688e0b2bb9f0e8de8e7e24ee392e77a7cb3",
+  "obsWindowsX64Sha256": "60b4510590140bd83625cc694d4ccd56b34fb499fc41d18c9558636a53ceabfa",
+  "simde": "0.8.2",
+  "simdeSha256": "ed2a3268658f2f2a9b5367628a85ccd4cf9516460ed8604eed369653d49b25fb",
+  "llvmMingw": "20261117",
+  "llvmMingwWindowsX64Sha256": "4d002e330a0f703625aa5ccbc37e96f8f824413e163bfc7336774aabd2c3a412",
+  "zxing": "2.3.0",
+  "zxingSha256": "64e4139103fdbc57752698ee15b5f0b0f7af9a0331ecbdc492047e0772c417ba"
+}

@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><style>body{font:15px -apple-system,sans-serif;max-width:780px;margin:32px auto;padding:16px;line-height:1.7}code{background:#eee;padding:3px}</style>
+<h1>OBS QR Shield 安装说明</h1>
+<p>Apple 芯片 Mac · macOS 13+ · OBS 32 · 已验证 OBS 32.2.2。Intel Mac 和 Windows 不适用。</p>
+<h2>安装</h2>
+<ol><li>把 OBS.app 放入“应用程序”文件夹。</li><li>退出 OBS，双击 PKG 安装包，按提示继续。插件安装给当前用户。</li><li>重新打开 OBS，在采集卡来源的“滤镜 → 效果滤镜”中添加“二维码自动遮挡 / QR Shield”。</li></ol>
+<p>高斯 Blur 的强度范围为 60–100，默认 80；也可选择黑块或自定义图片。同屏多个已识别二维码会分别遮挡。检测保持原分辨率，视频来源与 OBS 需使用 SDR。</p>
+<h2>安全确认</h2>
+<p>当前安装包未经过 Developer ID 签名和 Apple 公证。若 macOS 阻止打开，先确认来源和文件未遭篡改，再按 <a href="https://support.apple.com/zh-cn/102445">Apple 官方说明</a>，在“系统设置 → 隐私与安全性”中针对这个安装包确认“仍要打开”。请勿全局关闭系统安全保护。安装器获准打开也不保证所有 Mac 都能加载未公证插件。</p>
+<h2>更新与卸载</h2>
+<p>退出 OBS 后再次运行新版 PKG 即可更新。卸载时退出 OBS，然后删除：</p>
+<p><code>~/Library/Application Support/obs-studio/plugins/obs-qrcode.plugin</code></p>
+<p>不会更改 OBS 场景或声音设置。检测仍可能漏报，Blur 不能保证所有扫码器都无法解码，请先本地录制验证。音频同步偏移需按实际画面延迟自行调整。</p>
+<h2>源码与许可证</h2>
+<p>DMG 内附对应版本源码 ZIP 及 GPL-2.0-or-later 许可证。分享独立 PKG 时，请同时提供对应的源码 ZIP。</p>
+</html>

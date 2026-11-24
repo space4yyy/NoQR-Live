@@ -1,0 +1,9 @@
+/build/
+/.deps/
+/.vs/
+/CMakeUserPresets.json
+/.claude/
+.env
+.env.*
+.DS_Store
+*.user
