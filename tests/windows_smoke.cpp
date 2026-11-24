@@ -49,12 +49,17 @@ void verifyOverlay(const std::filesystem::path &fixtures)
     require(!qr::loadOverlay(utf8(fixtures / "missing.png")).error.empty(), "Missing overlay was accepted");
 }
 
-void verifyModule(const wchar_t *path, const wchar_t *obsPath)
+void verifyModule(std::filesystem::path pluginPath, std::filesystem::path obsPath)
 {
+    // CTest passes CMake paths with forward slashes. The Windows DLL loader needs native paths.
+    obsPath.make_preferred();
+    pluginPath.make_preferred();
+    require(std::filesystem::is_regular_file(obsPath), "Official obs.dll is missing");
+    require(std::filesystem::is_regular_file(pluginPath), "Plugin DLL is missing");
     constexpr DWORD search = LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR | LOAD_LIBRARY_SEARCH_DEFAULT_DIRS;
-    const HMODULE obs = LoadLibraryExW(obsPath, nullptr, search);
-    if (!obs) throw std::runtime_error("Cannot load official obs.dll: " + std::to_string(GetLastError()));
-    const HMODULE module = LoadLibraryExW(path, nullptr, search);
+    const HMODULE obs = LoadLibraryExW(obsPath.c_str(), nullptr, search);
+    if (!obs) throw std::runtime_error("Cannot load " + utf8(obsPath) + ": " + std::to_string(GetLastError()));
+    const HMODULE module = LoadLibraryExW(pluginPath.c_str(), nullptr, search);
     const DWORD error = GetLastError();
     const bool exports = module && GetProcAddress(module, "obs_module_set_pointer") &&
         GetProcAddress(module, "obs_module_ver") && GetProcAddress(module, "obs_module_load");
